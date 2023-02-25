@@ -7,7 +7,7 @@ import urllib.request
 
 from call_function_with_timeout import SetTimeoutDecorator
 
-MASTER_URL = rf"https://raw.githubusercontent.com/INBGM0212-2023/exercises/main/week-04/P1401"
+MASTER_URL = rf"https://raw.githubusercontent.com/INBGM0212-2023/exercises/main/week-04/P1041"
 
 
 def get_exercise_id() -> str:
@@ -15,6 +15,7 @@ def get_exercise_id() -> str:
 
 
 def download_test_conf(exercise_id: str) -> dict[str, str]:
+    print(rf"{MASTER_URL}/{exercise_id[:-2]}/test.json")
     with urllib.request.urlopen(rf"{MASTER_URL}/{exercise_id[:-2]}/test.json") as resp:
         return json.loads(resp.read().decode("utf-8"))
 
