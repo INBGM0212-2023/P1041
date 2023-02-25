@@ -15,7 +15,6 @@ def get_exercise_id() -> str:
 
 
 def download_test_conf(exercise_id: str) -> dict[str, str]:
-    print(rf"{MASTER_URL}/{exercise_id[:-2]}/test.json")
     with urllib.request.urlopen(rf"{MASTER_URL}/{exercise_id[:-2]}/test.json") as resp:
         return json.loads(resp.read().decode("utf-8"))
 
@@ -41,7 +40,6 @@ def call(module: object) -> None:
         test_suite = download_unit_test_suite(get_exercise_id(), test_id)
         for function_name in test_suite:
             for test_case in test_suite[function_name]:
-                print(type(test_case))
                 results = SetTimeoutDecorator(test_case["limit"])(getattr(module, function_name))(**test_case["in"])
                 if results[1]:
                     raise TimeoutError(f"Function <<{function_name}>> timed out after {test_case['limit']} seconds")
