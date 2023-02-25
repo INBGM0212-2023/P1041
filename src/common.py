@@ -7,8 +7,7 @@ import urllib.request
 
 from call_function_with_timeout import SetTimeoutDecorator
 
-PROJECT_NAME = os.path.split(os.path.dirname(os.getcwd()))[-1]
-MASTER_URL = rf"https://raw.githubusercontent.com/INBGM0212-2023/exercises/main/week-{PROJECT_NAME[-3:-1]}/{PROJECT_NAME[-5:]}"
+MASTER_URL = rf"https://raw.githubusercontent.com/INBGM0212-2023/exercises/main/week-04/P1401"
 
 
 def get_exercise_id() -> str:
